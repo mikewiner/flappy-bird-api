@@ -22,5 +22,10 @@ router.post('/submitascore', asyncMiddleware(async (req, res, next) => {
   await ScoreModel.create({ name , score });
   res.status(200).json({ status: 'ナイス　スコアー' });
 }));
+
+router.get('/scores2', asyncMiddleware(async (req, res, next) => {
+  const scores = await ScoreModel.find({}, 'name score -_id').sort({ score: -1}).limit(10);
+  res.status(200).json(scores);
+}));
  
 module.exports = router;

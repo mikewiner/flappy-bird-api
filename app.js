@@ -9,7 +9,7 @@ const passport = require('passport');
 
 const routes = require('./routes/index.js')
 const secureRoutes = require('./routes/secure');
-
+const cors = require('cors')
 
 const uri = process.env.MONGO_CONNECTION_URL;
 mongoose.connect(uri, { useNewUrlParser : true, useUnifiedTopology: true, useCreateIndex: true });
@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: false })); // parse application/x-www-
 app.use(bodyParser.json()); // parse application/json
 
 app.use(cookieParser());
- 
+app.use(cors()); 
 // require passport auth
 require('./auth/auth');
  
