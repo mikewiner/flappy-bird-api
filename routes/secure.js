@@ -20,11 +20,13 @@ router.get('/scores', asyncMiddleware(async (req, res, next) => {
 router.post('/submitascore', asyncMiddleware(async (req, res, next) => {
   const { name, score } = req.body;
   await ScoreModel.create({ name , score });
-  res.status(200).json({ status: 'ナイス　スコアー' });
+  //res.status(200).redirect('http://localhost')
+  res.status(200).json({ status: 'Great Score BUD' })
+ 
 }));
 
 router.get('/scores2', asyncMiddleware(async (req, res, next) => {
-  const scores = await ScoreModel.find({}, 'name score -_id').sort({ score: -1}).limit(10);
+  const scores = await ScoreModel.find({}, 'name score -_id').sort({ score: -1}).limit(25);
   res.status(200).json(scores);
 }));
  
