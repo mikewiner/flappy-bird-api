@@ -21,7 +21,7 @@ router.post('/submitascore', asyncMiddleware(async (req, res, next) => {
   const { name, score } = req.body;
   await ScoreModel.create({ name , score });
   //res.status(200).redirect('http://localhost')
-  res.status(200).redirect('https://mikewiner.github.io/flappy-bird/')
+  res.status(200).redirect('https://mikewiner.github.io/flappy-bird/submit.html')
  
 }));
 
